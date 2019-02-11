@@ -1,0 +1,8 @@
+/home# mkdir scorer
+/home# sudo apt-get install unzip
+/home# unzip /home/brahma_carpenter/scorer.20180815-20180926T123213Z-001.zip -d /home/scorer/
+/home/scorer# chmod 777 -R scorer.20180815
+# sed -i -e 's/\r$//' autodetect ==> 
+/home/scorer/scorer.20180815/Manufacturing# ./autodetect
+/home/scorer/scorer.20180815/Manufacturing# cd debian/scripts/
+/home/scorer/scorer.20180815/Manufacturing/debian/scripts/# ./RunAll.sh
