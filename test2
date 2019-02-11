@@ -1,0 +1,252 @@
+Checking out files: 100% (216/216), done.
+Updating 063cf932..08cd83d0
+Fast-forward
+Manufacturing/CONFIG.global                        |  72 +--
+Manufacturing/debian/scripts/RunAll.sh             |   7 +-
+.../{vca => builddeps}/nasm.Makefile.in.patch      |   0
+.../docker/files/ca2/13upperbody48x48.yml.gz       | Bin 0 -> 10034388 bytes
+.../docker/files/ca2/14upperbody64x64.yml.gz       | Bin 0 -> 19749479 bytes
+Manufacturing/docker/files/ca2/face_tracker        | 186 ++++++++
+Manufacturing/docker/files/ca2/pedestrian_tracker  | 217 +++++++++
+.../files/{vca => cat}/caffe.CMakeLists.txt.patch  |   0
+.../files/{vca => cat}/caffe2.CMakeLists.txt.patch |   0
+.../files/{vca => cat}/eigen3.CMakeLists.txt.patch |   0
+.../gst-plugins-bad.configure.ac.patch             |   0
+.../nvidia_video_codec_sdk_8.2.16_NvCodec.tgz      | Bin
+.../files/{vca => cat}/opencv.CMakeLists.txt.patch |   0
+.../{vca => cat}/openjp2.CMakeLists.txt.patch      |   0
+.../qt5.linux-rasp-pi3-g++_qmake.conf.patch        |   0
+.../qt5.xcb_egl.qxcbeglwindow.cpp.patch            |   0
+.../{vca => cat}/vtk.QVTKOpenGLWidget.cxx.patch    |   0
+...-Linux-2.6.38-and-later-do-not-support-th.patch |   0
+.../zbar/new_autotools_build_fix.patch             |   0
+.../zbar/python-zbar-import-fix-am.patch           |   0
+.../files/{vca => cat}/zbar/threading-fix.patch    |   0
+.../docker/scripts/0100_builddeps/101_buid_nasm.sh |   2 +-
+.../{0300_vca => 0300_cat}/100_build_orc.sh        |   0
+.../{0300_vca => 0300_cat}/101_build_gflags.sh     |   0
+.../{0300_vca => 0300_cat}/102_build_glog.sh       |   0
+.../{0300_vca => 0300_cat}/103_build_jemalloc.sh   |   0
+.../{0300_vca => 0300_cat}/104_build_jsoncpp.sh    |   0
+.../{0300_vca => 0300_cat}/105_build_protobuf.sh   |   0
+.../{0300_vca => 0300_cat}/106_build_pybind11.sh   |   0
+.../{0300_vca => 0300_cat}/107_build_libsrtp.sh    |   0
+.../{0300_vca => 0300_cat}/108_build_eigen.sh      |   2 +-
+.../{0300_vca => 0300_cat}/109_build_glew.sh       |   0
+.../{0300_vca => 0300_cat}/110_build_sip.sh        |   0
+.../{0300_vca => 0300_cat}/111_build_googletest.sh |   0
+.../113_build_ffmpeg_nvcodec_headers.sh            |   0
+.../{0300_vca => 0300_cat}/200_build_gstreamer.sh  |   0
+.../201_build_gst-plugins-base.sh                  |   0
+.../{0300_vca => 0300_cat}/202_build_qt5.sh        |   4 +-
+.../203_builg_gst-plugins-good.sh                  |   0
+.../204_build_gst-plugins-ugly.sh                  |   0
+.../205_build_gst-rpicamsrc.sh                     |   0
+.../{0300_vca => 0300_cat}/206_build_openjp2.sh    |   2 +-
+.../{0300_vca => 0300_cat}/207_build_leptonica.sh  |   0
+.../{0300_vca => 0300_cat}/208_build_tesseract.sh  |   0
+.../{0300_vca => 0300_cat}/209_build_ffmpeg.sh     |   0
+.../{0300_vca => 0300_cat}/210_build_gst-ffmpeg.sh |   0
+.../{0300_vca => 0300_cat}/211_build_vtk.sh        |   2 +-
+.../{0300_vca => 0300_cat}/213_build_libnice.sh    |   0
+.../{0300_vca => 0300_cat}/215_build_pyqt.sh       |   0
+.../{0300_vca => 0300_cat}/300_build_ceres.sh      |   0
+.../{0300_vca => 0300_cat}/301_build_opencv.sh     |   2 +-
+.../{0300_vca => 0300_cat}/302_build_caffe.sh      |   2 +-
+.../{0300_vca => 0300_cat}/303_build_caffe2.sh     |   2 +-
+.../304_build_imagemagick.sh                       |   0
+.../{0300_vca => 0300_cat}/305_build_zbar.sh       |   8 +-
+.../{0300_vca => 0300_cat}/306_build_pcl.sh        |   0
+.../{0300_vca => 0300_cat}/400_build_gpac.sh       |   0
+.../402_build_gst-plugins-bad.sh                   |   4 +-
+.../403_build_gst-editing-services.sh              |   0
+.../404_build_gst-rtsp-server.sh                   |   0
+.../405_build_gstreamer-vaapi.sh                   |   0
+.../{0300_vca => 0300_cat}/406_build_gst-omx.sh    |   0
+.../{0300_vca => 0300_cat}/407_build_gst_python.sh |   0
+.../900_vca_env.sh => 0300_cat/900_cat_env.sh}     |   4 +-
+.../901_cat_env_dev.sh}                            |   4 +-
+.../902_vca_basic.sh => 0300_cat/902_cat_basic.sh} |   6 +-
+.../903_cat_basic_dev.sh}                          |   6 +-
+.../904_cat_opencv.sh}                             |   6 +-
+.../905_cat_opencv_dev.sh}                         |   6 +-
+.../906_vca_pcl.sh => 0300_cat/906_cat_pcl.sh}     |   6 +-
+.../907_cat_pcl_dev.sh}                            |   6 +-
+.../908_vca_caffe.sh => 0300_cat/908_cat_caffe.sh} |   8 +-
+.../909_cat_caffe_dev.sh}                          |   8 +-
+.../910_cat_caffe2.sh}                             |   6 +-
+.../911_cat_caffe2_dev.sh}                         |   6 +-
+.../912_cat_tensorflow.sh}                         |   8 +-
+.../913_cat_tensorflow_dev.sh}                     |   8 +-
+.../914_cat_chainer.sh}                            |   6 +-
+.../915_cat_chainer_dev.sh}                        |   6 +-
+.../916_cat_pytorch.sh}                            |   6 +-
+.../917_cat_pytorch_dev.sh}                        |   6 +-
+.../918_cat_chainercv.sh}                          |   6 +-
+.../919_cat_chainercv_dev.sh}                      |   6 +-
+.../930_cat_gstreamer_full.sh}                     |   6 +-
+.../931_cat_gstreamer_full_dev.sh}                 |   6 +-
+Manufacturing/docker/scripts/0400_caf/keep         |   0
+.../scripts/0500_ca2/400_build_cascade_tracker.sh  | 191 ++++++++
+.../scripts/0500_ca2/401_build_hog_tracker.sh      | 191 ++++++++
+.../scripts/0500_ca2/900_ca2_cascade_tracker.sh    |  68 +++
+.../docker/scripts/0500_ca2/901_ca2_hog_tracker.sh |  76 +++
+.../{0400_c3 => 0700_c3}/100_build_libuv.sh        |   0
+.../{0400_c3 => 0700_c3}/101_build_log4cplus.sh    |   0
+.../{0400_c3 => 0700_c3}/110_build_s3_uploader.sh  |   0
+.../scripts/{0400_c3 => 0700_c3}/200_build_jq.sh   |   0
+.../500_build_libwebsockets.sh                     |   0
+.../{0400_c3 => 0700_c3}/501_build_mosquitto.sh    |   0
+.../{0400_c3 => 0700_c3}/900_c3_s3_uploader.sh     |   4 +-
+Manufacturing/docker/scripts/0800_sdk/keep         |   0
+.../{0600_tdc => 0900_tdc}/500_build_usrsctp.sh    |   0
+.../501_build_libmicrohttpd.sh                     |   0
+.../{0600_tdc => 0900_tdc}/502_build_janus.sh      |   0
+Manufacturing/docker/scripts/0900_tdc/keep         |   0
+Manufacturing/docker/scripts/CONFIG                |   8 +-
+Manufacturing/docker/scripts/RunAll.sh             |   9 +-
+Manufacturing/docker/scripts/docker_build          |  23 +-
+Manufacturing/docker/scripts/docker_run            |   4 +-
+Manufacturing/docker/scripts/ecr_pull              |   4 +-
+Manufacturing/docker/scripts/ecr_push              |   4 +-
+Manufacturing/docker/scripts/function              |   8 +
+modules/ca2/cascade-tracker/CMakeLists.txt         | 111 +++++
+modules/ca2/cascade-tracker/common                 |   1 +
+modules/ca2/cascade-tracker/main.cpp               | 493 ++++++++++++++++++++
+modules/ca2/hog-tracker/CMakeLists.txt             | 112 +++++
+modules/ca2/hog-tracker/common                     |   1 +
+modules/ca2/hog-tracker/hog.cpp                    |  62 +++
+modules/ca2/hog-tracker/hog.hpp                    |  22 +
+modules/ca2/hog-tracker/main.cpp                   | 469 +++++++++++++++++++
+modules/common/debug_win.hpp                       | 297 ++++++++++++
+modules/common/dump_image.cpp                      |  79 ++++
+modules/common/dump_image.hpp                      |  20 +
+modules/common/fps_stats.cpp                       | 102 +++++
+modules/common/fps_stats.hpp                       | 135 ++++++
+modules/common/md5sum.cpp                          |  33 ++
+modules/common/md5sum.hpp                          |  16 +
+modules/common/object_tracker.cpp                  | 508 +++++++++++++++++++++
+modules/common/object_tracker.hpp                  | 459 +++++++++++++++++++
+modules/common/protocol.cpp                        | 237 ++++++++++
+modules/common/protocol.hpp                        |  98 ++++
+128 files changed, 4360 insertions(+), 133 deletions(-)
+rename Manufacturing/docker/files/{vca => builddeps}/nasm.Makefile.in.patch (100%)
+create mode 100644 Manufacturing/docker/files/ca2/13upperbody48x48.yml.gz
+create mode 100644 Manufacturing/docker/files/ca2/14upperbody64x64.yml.gz
+create mode 100755 Manufacturing/docker/files/ca2/face_tracker
+create mode 100755 Manufacturing/docker/files/ca2/pedestrian_tracker
+rename Manufacturing/docker/files/{vca => cat}/caffe.CMakeLists.txt.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/caffe2.CMakeLists.txt.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/eigen3.CMakeLists.txt.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/gst-plugins-bad.configure.ac.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/nvidia_video_codec_sdk_8.2.16_NvCodec.tgz (100%)
+rename Manufacturing/docker/files/{vca => cat}/opencv.CMakeLists.txt.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/openjp2.CMakeLists.txt.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/qt5.linux-rasp-pi3-g++_qmake.conf.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/qt5.xcb_egl.qxcbeglwindow.cpp.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/vtk.QVTKOpenGLWidget.cxx.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/zbar/0001-Description-Linux-2.6.38-and-later-do-not-support-th.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/zbar/new_autotools_build_fix.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/zbar/python-zbar-import-fix-am.patch (100%)
+rename Manufacturing/docker/files/{vca => cat}/zbar/threading-fix.patch (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/100_build_orc.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/101_build_gflags.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/102_build_glog.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/103_build_jemalloc.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/104_build_jsoncpp.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/105_build_protobuf.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/106_build_pybind11.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/107_build_libsrtp.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/108_build_eigen.sh (98%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/109_build_glew.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/110_build_sip.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/111_build_googletest.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/113_build_ffmpeg_nvcodec_headers.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/200_build_gstreamer.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/201_build_gst-plugins-base.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/202_build_qt5.sh (97%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/203_builg_gst-plugins-good.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/204_build_gst-plugins-ugly.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/205_build_gst-rpicamsrc.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/206_build_openjp2.sh (98%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/207_build_leptonica.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/208_build_tesseract.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/209_build_ffmpeg.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/210_build_gst-ffmpeg.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/211_build_vtk.sh (99%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/213_build_libnice.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/215_build_pyqt.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/300_build_ceres.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/301_build_opencv.sh (99%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/302_build_caffe.sh (98%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/303_build_caffe2.sh (98%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/304_build_imagemagick.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/305_build_zbar.sh (94%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/306_build_pcl.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/400_build_gpac.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/402_build_gst-plugins-bad.sh (97%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/403_build_gst-editing-services.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/404_build_gst-rtsp-server.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/405_build_gstreamer-vaapi.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/406_build_gst-omx.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca => 0300_cat}/407_build_gst_python.sh (100%)
+rename Manufacturing/docker/scripts/{0300_vca/900_vca_env.sh => 0300_cat/900_cat_env.sh} (98%)
+rename Manufacturing/docker/scripts/{0300_vca/901_vca_env_dev.sh => 0300_cat/901_cat_env_dev.sh} (98%)
+rename Manufacturing/docker/scripts/{0300_vca/902_vca_basic.sh => 0300_cat/902_cat_basic.sh} (98%)
+rename Manufacturing/docker/scripts/{0300_vca/903_vca_basic_dev.sh => 0300_cat/903_cat_basic_dev.sh} (98%)
+rename Manufacturing/docker/scripts/{0300_vca/904_vca_opencv.sh => 0300_cat/904_cat_opencv.sh} (97%)
+rename Manufacturing/docker/scripts/{0300_vca/905_vca_opencv_dev.sh => 0300_cat/905_cat_opencv_dev.sh} (97%)
+rename Manufacturing/docker/scripts/{0300_vca/906_vca_pcl.sh => 0300_cat/906_cat_pcl.sh} (93%)
+rename Manufacturing/docker/scripts/{0300_vca/907_vca_pcl_dev.sh => 0300_cat/907_cat_pcl_dev.sh} (93%)
+rename Manufacturing/docker/scripts/{0300_vca/908_vca_caffe.sh => 0300_cat/908_cat_caffe.sh} (92%)
+rename Manufacturing/docker/scripts/{0300_vca/909_vca_caffe_dev.sh => 0300_cat/909_cat_caffe_dev.sh} (92%)
+rename Manufacturing/docker/scripts/{0300_vca/910_vca_caffe2.sh => 0300_cat/910_cat_caffe2.sh} (87%)
+rename Manufacturing/docker/scripts/{0300_vca/911_vca_caffe2_dev.sh => 0300_cat/911_cat_caffe2_dev.sh} (86%)
+rename Manufacturing/docker/scripts/{0300_vca/912_vca_tensorflow.sh => 0300_cat/912_cat_tensorflow.sh} (90%)
+rename Manufacturing/docker/scripts/{0300_vca/913_vca_tensorflow_dev.sh => 0300_cat/913_cat_tensorflow_dev.sh} (90%)
+rename Manufacturing/docker/scripts/{0300_vca/914_vca_chainer.sh => 0300_cat/914_cat_chainer.sh} (92%)
+rename Manufacturing/docker/scripts/{0300_vca/915_vca_chainer_dev.sh => 0300_cat/915_cat_chainer_dev.sh} (91%)
+rename Manufacturing/docker/scripts/{0300_vca/916_vca_pytorch.sh => 0300_cat/916_cat_pytorch.sh} (94%)
+rename Manufacturing/docker/scripts/{0300_vca/917_vca_pytorch_dev.sh => 0300_cat/917_cat_pytorch_dev.sh} (93%)
+rename Manufacturing/docker/scripts/{0300_vca/918_vca_chainercv.sh => 0300_cat/918_cat_chainercv.sh} (92%)
+rename Manufacturing/docker/scripts/{0300_vca/919_vca_chainercv_dev.sh => 0300_cat/919_cat_chainercv_dev.sh} (91%)
+rename Manufacturing/docker/scripts/{0300_vca/930_vca_gstreamer_full.sh => 0300_cat/930_cat_gstreamer_full.sh} (96%)
+rename Manufacturing/docker/scripts/{0300_vca/931_vca_gstreamer_full_dev.sh => 0300_cat/931_cat_gstreamer_full_dev.sh} (95%)
+create mode 100644 Manufacturing/docker/scripts/0400_caf/keep
+create mode 100755 Manufacturing/docker/scripts/0500_ca2/400_build_cascade_tracker.sh
+create mode 100755 Manufacturing/docker/scripts/0500_ca2/401_build_hog_tracker.sh
+create mode 100755 Manufacturing/docker/scripts/0500_ca2/900_ca2_cascade_tracker.sh
+create mode 100755 Manufacturing/docker/scripts/0500_ca2/901_ca2_hog_tracker.sh
+rename Manufacturing/docker/scripts/{0400_c3 => 0700_c3}/100_build_libuv.sh (100%)
+rename Manufacturing/docker/scripts/{0400_c3 => 0700_c3}/101_build_log4cplus.sh (100%)
+rename Manufacturing/docker/scripts/{0400_c3 => 0700_c3}/110_build_s3_uploader.sh (100%)
+rename Manufacturing/docker/scripts/{0400_c3 => 0700_c3}/200_build_jq.sh (100%)
+rename Manufacturing/docker/scripts/{0400_c3 => 0700_c3}/500_build_libwebsockets.sh (100%)
+rename Manufacturing/docker/scripts/{0400_c3 => 0700_c3}/501_build_mosquitto.sh (100%)
+rename Manufacturing/docker/scripts/{0400_c3 => 0700_c3}/900_c3_s3_uploader.sh (95%)
+create mode 100644 Manufacturing/docker/scripts/0800_sdk/keep
+rename Manufacturing/docker/scripts/{0600_tdc => 0900_tdc}/500_build_usrsctp.sh (100%)
+rename Manufacturing/docker/scripts/{0600_tdc => 0900_tdc}/501_build_libmicrohttpd.sh (100%)
+rename Manufacturing/docker/scripts/{0600_tdc => 0900_tdc}/502_build_janus.sh (100%)
+create mode 100644 Manufacturing/docker/scripts/0900_tdc/keep
+create mode 100644 modules/ca2/cascade-tracker/CMakeLists.txt
+create mode 120000 modules/ca2/cascade-tracker/common
+create mode 100644 modules/ca2/cascade-tracker/main.cpp
+create mode 100644 modules/ca2/hog-tracker/CMakeLists.txt
+create mode 120000 modules/ca2/hog-tracker/common
+create mode 100644 modules/ca2/hog-tracker/hog.cpp
+create mode 100644 modules/ca2/hog-tracker/hog.hpp
+create mode 100644 modules/ca2/hog-tracker/main.cpp
+create mode 100644 modules/common/debug_win.hpp
+create mode 100644 modules/common/dump_image.cpp
+create mode 100644 modules/common/dump_image.hpp
+create mode 100644 modules/common/fps_stats.cpp
+create mode 100644 modules/common/fps_stats.hpp
+create mode 100644 modules/common/md5sum.cpp
+create mode 100644 modules/common/md5sum.hpp
+create mode 100644 modules/common/object_tracker.cpp
+create mode 100644 modules/common/object_tracker.hpp
+create mode 100644 modules/common/protocol.cpp
+create mode 100644 modules/common/protocol.hpp
+
+Success (20750 ms @ 09-02-2019 01:02:35)
